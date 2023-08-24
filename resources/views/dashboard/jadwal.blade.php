@@ -13,6 +13,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card-body p-0">
             <table class="table ">
                 <thead>
@@ -23,7 +24,9 @@
                         <th>Jam</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($ibadah as $dataIbadah)
+                </thead>
+                @foreach ($ibadah as $dataIbadah)
+                    <tbody>
                         <tr>
                             <td>{{ $dataIbadah->id_ibadah }}</td>
                             <td>{{ \Carbon\Carbon::parse($dataIbadah->tanggal_ibadah)->translatedFormat('d-F-Y') }}</td>
@@ -44,11 +47,9 @@
                                 </ul>
                             </td>
                         </tr>
-                    @endforeach
-                </thead>
-                <tbody>
+                @endforeach
                 </tbody>
             </table>
-            {{ $ibadah->links() }}
         </div>
+        {{ $ibadah->links() }}
     @endsection

@@ -23,7 +23,9 @@
                         <th>Jumlah Persembahan</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($persembahan as $dataPersembahan)
+                </thead>
+                @foreach ($persembahan as $dataPersembahan)
+                    <tbody>
                         <tr>
                             <td>{{ $dataPersembahan->id_persembahan }}</td>
                             <td>{{ \Carbon\Carbon::parse($dataPersembahan->tanggal_persembahan)->translatedFormat('D, d-F-Y') }}
@@ -46,10 +48,9 @@
                                 </ul>
                             </td>
                         </tr>
-                    @endforeach
-                </thead>
-                <tbody>
+                @endforeach
                 </tbody>
             </table>
         </div>
+        {{ $persembahan->links() }}
     @endsection

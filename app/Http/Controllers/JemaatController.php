@@ -19,7 +19,8 @@ class JemaatController extends Controller
         ->join('wilayahs','jemaats.id_wilayah','=','wilayahs.id_wilayah')
         ->join('pelayanans','jemaats.id_pelayanan','=','pelayanans.id_pelayanan')
         ->orderBy('jemaats.id_jemaat','ASC')
-        ->get();
+        ->paginate(5);
+        // $jemaat = Jemaat::paginate(5);
         // dd($jemaat);
         return view('dashboard.jemaat', compact('jemaat'));
     }
@@ -70,5 +71,10 @@ class JemaatController extends Controller
         $jemaat->delete();
         return redirect('/jemaat    ');
     }
+    // public function totalWilayah($wilayah)
+    // {
+    //     $wilayah = DB::table('wilayahs')->select('id_wilayah', 'nama_wilayah')->get();
+
+    // }
 
 }

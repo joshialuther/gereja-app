@@ -31,10 +31,7 @@ Auth::routes();
 
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 //home
-Route::get('/home','HomeController@index')->name('home');
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/dashboard', [DashboardController::class,'index']);
 
 //Jadwal
 Route::get('/jadwal', [IbadahController::class, 'index']);

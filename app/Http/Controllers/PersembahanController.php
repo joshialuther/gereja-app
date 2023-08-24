@@ -12,7 +12,7 @@ class PersembahanController extends Controller
     public function index(Request $request, Persembahan $persembahans)
     {
         $q = $request->input('q');
-        $persembahan = Persembahan::all();
+        $persembahan = Persembahan::paginate(5);
         return view('dashboard.persembahan', compact('persembahan'));
        }
 
