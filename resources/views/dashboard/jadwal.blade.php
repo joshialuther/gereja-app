@@ -18,7 +18,7 @@
             <table class="table ">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        {{-- <th>#</th> --}}
                         <th>Tanggal</th>
                         <th>Jenis Ibadah</th>
                         <th>Jam</th>
@@ -28,10 +28,10 @@
                 @foreach ($ibadah as $dataIbadah)
                     <tbody>
                         <tr>
-                            <td>{{ $dataIbadah->id_ibadah }}</td>
+                            {{-- <td>{{ $dataIbadah->id_ibadah }}</td> --}}
                             <td>{{ \Carbon\Carbon::parse($dataIbadah->tanggal_ibadah)->translatedFormat('d-F-Y') }}</td>
                             <td>{{ $dataIbadah->jenis_ibadah }}</td>
-                            <td>{{ \Carbon\Carbon::parse($dataIbadah->jam_ibadah)->translatedFormat('h:i') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($dataIbadah->jam_ibadah)->translatedFormat('h:i') }} WIB</td>
                             <td>
                                 <ul class="list-inline m-0">
                                     <li class="list-inline-item">

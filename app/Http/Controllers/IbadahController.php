@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ibadah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
 
 
 class IbadahController extends Controller
@@ -23,7 +25,13 @@ class IbadahController extends Controller
 
     public function store(Request $request)
     {
-        Ibadah::create($request->except(['_token','simpan','updated_at']));
+        $data = [
+            'jenis_ibadah' => $request->input('jenis_ibadah'),
+            'tanggal_ibadah' => $request->input('tanggal_ibadah'),
+            'jam_ibadah' => $request->input('jam_ibadah'),
+        ];
+
+        DB::table('ibadahs')->insert($data);
         return redirect('/jadwal');
     }
 

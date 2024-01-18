@@ -91,8 +91,8 @@
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 vh-100">
                         <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
                             <li>
-                                <a href="/home" class="nav-link px-0 align-middle h1">
-                                    <i class="bi bi-house"></i>
+                                <a href="/dashboard" class="nav-link px-0 align-middle h1">
+                                    <i class="fs-4 bi bi-house"></i>
                                     <span class="ms-2">Dashboard</span>
                                 </a>
                             </li>
@@ -103,19 +103,28 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/jemaat" class="nav-link px-0 align-middle">
+                                <a href="/jemaat" class="nav-link px-0 align-middle h1">
                                     <i class="fs-4 bi-people"></i>
-                                    <span class="ms-2 d-sm-inline">Jemaat</span></a>
+                                    <span class="ms-2 d-sm-inline">Jemaat</span>
+                                </a>
                             </li>
                             <li>
                                 <a href="/persembahan" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-person-badge"></i>
-                                    <span class="ms-2 d-sm-inline">Persembahan</span></a>
+                                    <i class="fs-4 bi bi-wallet"></i>
+                                    <span class="ms-2 d-sm-inline">Persembahan</span>
+                                </a>
                             </li>
                             <li>
                                 <a href="/khotbah" class="nav-link px-0 align-middle">
                                     <i class="fs-4 bi-table"></i>
-                                    <span class="ms-2 d-sm-inline">Ringkasan Khotbah</span></a>
+                                    <span class="ms-2 d-sm-inline">Ringkasan Khotbah</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/pengurus" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi bi-person-vcard-fill"></i>
+                                    <span class="ms-2 d-sm-inline">Pengurus</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

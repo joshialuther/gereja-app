@@ -8,6 +8,8 @@ use App\Http\Controllers\IbadahController;
 use App\Http\Controllers\JemaatController;
 use App\Http\Controllers\KhotbahController;
 use App\Http\Controllers\PersembahanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengurusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,9 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-
+Route::get('/khotbahPdf', function () {
+    return view('dashboard.khotbahPdf');
+});
 Auth::routes();
 
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
@@ -48,6 +52,7 @@ Route::post('/jemaat/store',[JemaatController::class, 'store']);
 Route::get('/jemaat/{id_jemaat}/edit',[JemaatController::class, 'edit']);
 Route::put('/jemaat/{id_jemaat}',[JemaatController::class, 'update']);
 Route::delete('/jemaat/{id_jemaat}',[JemaatController::class, 'destroy']);
+
 //Persembahan
 Route::get('/persembahan', [PersembahanController::class, 'index']);
 Route::get('/persembahan/create', [PersembahanController::class, 'create']);
@@ -63,6 +68,13 @@ Route::post('/khotbah/store' ,[KhotbahController::class, 'store']);
 Route::get('/khotbah/{id_khotbah}/edit', [KhotbahController::class, 'edit']);
 Route::put('/khotbah/{id_khotbah}', [KhotbahController::class, 'update']);
 Route::delete('/khotbah/{id_khotbah}', [KhotbahController::class, 'destroy']);
+Route::get('khotbahPdf', [KhotbahController::class,'generatePdf'])->name('cetakPdf');
 
-
+//Pengurus
+Route::get('/pengurus', [PengurusController::class, 'index']);
+Route::get('/pengurus/create', [PengurusController::class, 'create']);
+Route::post('/pengurus/store' ,[PengurusController::class, 'store']);
+Route::get('/pengurus/{id_pengurus}/edit', [PengurusController::class, 'edit']);
+Route::put('/pengurus/{id_pengurus}', [PengurusController::class, 'update']);
+Route::delete('/pengurus/{id_pengurus}', [PengurusController::class, 'destroy']);
 

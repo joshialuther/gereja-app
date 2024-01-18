@@ -12,16 +12,26 @@
     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap");
 
     * {
+        background-image: url(/image/home.jpg);
+        background-size: cover;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        user-select: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: wheat;
+
     }
 
     .bg-img {
-        background: url("img/latar.jpg") height: 100vh;
-        background-size: cover;
-        background-position: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .bg-img:after {
@@ -29,9 +39,10 @@
         content: "";
         top: 0;
         left: 0;
+        right: 0;
+        bottom: 0;
         height: 100%;
         width: 100%;
-        background: rgba(211, 211, 255, 0.7);
     }
 
     .content {
@@ -55,130 +66,31 @@
         font-family: "Montserrat", sans-serif;
     }
 
-    .field {
-        position: relative;
-        height: 45px;
-        width: 100%;
-        display: flex;
-        background: rgba(255, 255, 255, 0.94);
-    }
-
-    .field span {
-        color: #222;
-        width: 40px;
-        line-height: 45px;
-    }
-
-    .field input {
-        height: 100%;
-        width: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #222;
-        font-size: 16px;
-        font-family: "Poppins", sans-serif;
-    }
-
-    .space {
-        margin-top: 16px;
-    }
-
-    .show {
-        position: absolute;
-        right: 13px;
-        font-size: 13px;
-        font-weight: 700;
-        color: #222;
-        display: none;
-        cursor: pointer;
-        font-family: "Montserrat", sans-serif;
-    }
-
-    .pass-key:valid~.show {
-        display: block;
-    }
-
-    .pass {
-        text-align: left;
-        margin: 10px 0;
-    }
-
-    .pass a {
-        color: white;
-        text-decoration: none;
-        font-family: "Poppins", sans-serif;
-    }
-
-    .pass:hover a {
-        text-decoration: underline;
-    }
-
-    .field input[type="submit"] {
-        background: #3498db;
-        border: 1px solid #2691d9;
-        color: white;
-        font-size: 18px;
-        letter-spacing: 1px;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: "Montserrat", sans-serif;
-    }
-
-    .field input[type="submit"]:hover {
-        background: #2691d9;
-    }
-
-    .login {
-        color: white;
-        margin: 20px 0;
-        font-family: "Poppins", sans-serif;
-    }
-
     .links {
-        display: flex;
+        /* display: flex; */
         cursor: pointer;
         color: white;
         margin: 0 0 20px 0;
     }
 
-    .facebook,
-    .instagram {
+    .btn-login,
+    .btn-register {
+
         width: 100%;
         height: 45px;
         line-height: 45px;
-        margin-left: 10px;
+        margin-bottom: 10px;
+
     }
 
-    .facebook {
-        margin-left: 0;
+    .btn-login {
         background: #4267b2;
         border: 1px solid #3e61a8;
     }
 
-    .instagram {
+    .btn-register {
         background: #e1306c;
         border: 1px solid #df2060;
-    }
-
-    .facebook:hover {
-        background: #3e61a8;
-    }
-
-    .instagram:hover {
-        background: #df2060;
-    }
-
-    .links i {
-        font-size: 17px;
-    }
-
-    i span {
-        margin-left: 8px;
-        font-weight: 500;
-        letter-spacing: 1px;
-        font-size: 16px;
-        font-family: "Poppins", sans-serif;
     }
 </style>
 
@@ -186,14 +98,17 @@
     <div class="bg-img">
         <div class="content">
             <header>Selamat Datang</header>
-            <form action="#"></form>
             <div class="links">
-                <div class="facebook">
-                    <a href="{{ route('login') }}"><span>Login</span></a>
-                </div>
-                <div class="instagram">
-                    <a href="{{ route('register') }}"><span>Register</span></a>
-                </div>
+                <a href="{{ route('login') }}">
+                    <div class="btn-login">
+                        Login
+                    </div>
+                </a>
+                <a href="{{ route('register') }}">
+                    <div class="btn-register">
+                        Register
+                    </div>
+                </a>
             </div>
         </div>
     </div>

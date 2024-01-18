@@ -30,18 +30,24 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="isi_khotbah">Isi Khotbah :</label>
-                                <textarea name="isi_khotbah" id="" cols="120" rows="20">{{ $khotbah->isi_khotbah }}</textarea>
+                                <label for="pembicara">Pembicara :</label>
+                                <input type="text" class="form-control" name="pembicara"
+                                    value="{{ $khotbah->pembicara }}">
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="submit" value="simpan">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="isi_khotbah">Isi Khotbah :</label>
+                                    <textarea name="isi_khotbah" id="" cols="120" rows="20">{{ $khotbah->isi_khotbah }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" value="update" class=" btn btn-primary">Update</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
 @endsection

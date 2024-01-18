@@ -4,6 +4,9 @@
     <div class="mb-2">
         <a href="/khotbah/create" class="btn btn-primary">Tambah Data Khotbah</a>
     </div>
+    <div class="mb-2">
+        <a href="/khotbahPdf" class="btn btn-primary">Cetak</a>
+    </div>
 
     <div class="card">
         <div class="card-header">
@@ -18,15 +21,15 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>Tanggal</th>
+                        <th>Pembicara</th>
                         <th>Judul Khotbah</th>
                         <th>Action</th>
                     </tr>
                     @foreach ($khotbah as $dataKhotbah)
                         <tr>
-                            <td>{{ $dataKhotbah->id_khotbah }}</td>
                             <td>{{ $dataKhotbah->tanggal_khotbah }}</td>
+                            <td>{{ $dataKhotbah->pembicara }}</td>
                             <td>{{ $dataKhotbah->judul_khotbah }}</td>
                             <td>
                                 <ul class="list-inline m-0">
@@ -41,6 +44,7 @@
                                             <input type="submit" class="btn btn-danger " value="Delete">
                                         </form>
                                     </li>
+
                                 </ul>
                             </td>
                         </tr>

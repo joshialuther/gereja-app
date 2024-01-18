@@ -60,26 +60,27 @@
                                 <label for="jenis_kelamin">Jenis Kelamin :</label>
                                 <br>
                                 @if ($jemaat->jenis_kelamin == 'Pria')
-                                    <input type="radio" id="pria" name="jenis_kelamin" value="pria" checked>
+                                    <input class="form-check-input" type="radio" id="pria" name="jenis_kelamin"
+                                        value="pria" checked>
                                     <label for="pria">Pria</label><br>
-                                    <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">
+                                    <input class="form-check-input" type="radio" id="wanita" name="jenis_kelamin"
+                                        value="wanita">
                                     <label for="wanita">Wanita</label><br>
                                 @else
-                                    <input type="radio" id="pria" name="jenis_kelamin" value="pria">
+                                    <input class="form-check-input" type="radio" id="pria" name="jenis_kelamin"
+                                        value="pria">
                                     <label for="pria">Pria</label><br>
-                                    <input type="radio" id="wanita" name="jenis_kelamin" value="wanita" checked>
+                                    <input class="form-check-input" type="radio" id="wanita" name="jenis_kelamin"
+                                        value="wanita" checked>
                                     <label for="wanita">Wanita</label><br>
                                 @endif
-                                {{-- <input type="radio" id="pria" name="jenis_kelamin" value="pria">
-                                <label for="pria">Pria</label><br>
-                                <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">
-                                <label for="wanita">Wanita</label><br> --}}
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="alamat_jemaat">Alamat :</label>
-                                <textarea name="alamat_jemaat" value="{{ $jemaat->alamat_jemaat }}" id="alamat_jemaat" cols="25" rows="2"></textarea>
+                                <textarea name="alamat_jemaat" value="{{ $jemaat->alamat_jemaat }}" id="alamat_jemaat" cols="25" rows="2"
+                                    class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -91,22 +92,16 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nama_pelayanan">Pelayanan :</label>
-                                <select name="nama_pelayanan" id="nama_pelayanan">
-                                    @foreach ($pelayanan as $item)
-                                        @if ($item->id_pelayanan == $jemaat->id_pelayanan)
-                                            <option value="{{ $item->id_pelayanan }}" selected>{{ $item->jenis_pelayanan }}
-                                            </option>
-                                        @endif
-                                        <option value="{{ $item->id_pelayanan }}">{{ $item->jenis_pelayanan }}</option>
-                                    @endforeach
-                                </select>
+                                <label for="nama">Pelayanan :</label>
+                                <input type="text" value="{{ $jemaat->jenis_pelayanan }}" class="form-control"
+                                    name="jenis_pelayanan" id="">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="nama_wilayah">Wilayah:</label>
-                                <select name="nama_wilayah" id="nama_wilayah">
+                                <br>
+                                <select name="nama_wilayah" id="nama_wilayah" class="form-control">
                                     @foreach ($wilayah as $item)
                                         @if ($item->id_wilayah == $jemaat->id_wilayah)
                                             <option value="{{ $item->id_wilayah }}" selected>{{ $item->nama_wilayah }}
@@ -120,7 +115,7 @@
                         <br>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="submit" value="submit">
+                                <button type="submit" value="submit" class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </div>

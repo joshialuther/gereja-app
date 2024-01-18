@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Validator;
 use App\Models\Jemaat;
+use App\Models\Pelayanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -14,23 +15,36 @@ class JemaatController extends Controller
     public function index(Request $request, Jemaat $jemaats)
     {
         $q = $request->input('q');
+        // SELECT
+        // jemaats.id_jemaat, jemaats.nama,jemaats.nik,jemaats.tempat_lahir,jemaats.tanggal_lahir,jemaats.gol_darah,jemaats.jenis_kelamin,jemaats.alamat_jemaat, jemaats.no_telepon,wilayahs.nama_wilayah,
+        // GROUP_CONCAT(pelayanans.jenis_pelayanan) as jenis_pelayanan
+        // FROM jemaats
+        // JOIN wilayahs ON jemaats.id_wilayah = wilayahs.id_wilayah
+        // LEFT JOIN jemaats_pelayanans ON jemaats.id_jemaat = jemaats_pelayanans.id_jemaats
+        // LEFT JOIN pelayanans ON jemaats_pelayanans.id_pelayanans = pelayanans.id_pelayanan
+        // GROUP BY jemaats.id_jemaat, jemaats.nama,jemaats.nik,jemaats.tempat_lahir,jemaats.tanggal_lahir,jemaats.gol_darah,jemaats.jenis_kelamin,jemaats.alamat_jemaat,jemaats.no_telepon,wilayahs.nama_wilayah
+        // ORDER BY jemaats.nama ASC;
+        // $jemaat = DB::table('jemaats')
+        // ->select('jemaats.id_jemaat','jemaats.nama','jemaats.nik','jemaats.tempat_lahir','jemaats.tanggal_lahir','jemaats.gol_darah','jemaats.jenis_kelamin','jemaats.alamat_jemaat','jemaats.no_telepon','wilayahs.nama_wilayah',DB::raw('GROUP_CONCAT(pelayanans.jenis_pelayanan) as jenis_pelayanan'))
+        // ->join('wilayahs','jemaats.id_wilayah','=','wilayahs.id_wilayah')
+        // ->leftJoin('jemaats_pelayanans','jemaats.id_jemaat','=','jemaats_pelayanans.id_jemaats')
+        // ->leftJoin('pelayanans','jemaats_pelayanans.id_pelayanans','=','pelayanans.id_pelayanan')
+        // ->groupBy(['jemaats.id_jemaat','jemaats.nama','jemaats.nik','jemaats.tempat_lahir','jemaats.tanggal_lahir','jemaats.gol_darah','jemaats.jenis_kelamin','jemaats.alamat_jemaat','jemaats.no_telepon','wilayahs.nama_wilayah'])
+        // ->orderBy('jemaats.nama','ASC')
         $jemaat = DB::table('jemaats')
-        ->select('jemaats.id_jemaat','jemaats.nama','jemaats.nik','jemaats.tempat_lahir','jemaats.tanggal_lahir','jemaats.gol_darah','jemaats.jenis_kelamin','jemaats.alamat_jemaat','jemaats.no_telepon','wilayahs.nama_wilayah','pelayanans.jenis_pelayanan')
+        ->select('jemaats.id_jemaat','jemaats.nama','jemaats.nik','jemaats.tempat_lahir','jemaats.tanggal_lahir','jemaats.gol_darah','jemaats.jenis_kelamin','jemaats.alamat_jemaat','jemaats.no_telepon','jemaats.jenis_pelayanan','jemaats.id_wilayah','wilayahs.nama_wilayah')
         ->join('wilayahs','jemaats.id_wilayah','=','wilayahs.id_wilayah')
-        ->join('pelayanans','jemaats.id_pelayanan','=','pelayanans.id_pelayanan')
-        ->orderBy('jemaats.id_jemaat','ASC')
         ->paginate(5);
-        // $jemaat = Jemaat::paginate(5);
         // dd($jemaat);
         return view('dashboard.jemaat', compact('jemaat'));
     }
 
     public function create(Request $request, Jemaat $jemaats)
     {
-        $pelayanan = DB::table('pelayanans')->select('id_pelayanan', 'jenis_pelayanan')->get();
-        // dd($pelayanan);
         $wilayah = DB::table('wilayahs')->select('id_wilayah', 'nama_wilayah')->get();
-        return view('dashboard.jemaat.create', ['dataPelayanan'=>$pelayanan,'dataWilayah'=>$wilayah]);
+        $pelayanan = DB::table('pelayanans')->select('id_pelayanan','jenis_pelayanan')->get();
+        // dd($wilayah, $pelayanan);
+        return view('dashboard.jemaat.create', ['dataWilayah'=>$wilayah,'dataPelayanan'=>$pelayanan]);
     }
     public function store(Request $request)
     {
@@ -44,19 +58,23 @@ class JemaatController extends Controller
             'alamat_jemaat' => $request->input('alamat_jemaat'),
             'no_telepon' => $request->input('no_telepon'),
             'id_wilayah' => $request->input('nama_wilayah'),
-            'id_pelayanan' => $request->input('nama_pelayanan'),
+            'jenis_pelayanan' => $request->input('jenis_pelayanan'),
         ];
-
+        // $data->pelayans()->attach($pelayanan);
+        // dd($data, $pelayanan);
         DB::table('jemaats')->insert($data);
+        // DB::table('jemaats_pelayanans')->insert($pelayanan);
+
+
         return redirect('/jemaat');
     }
     public function edit($id_jemaat) {
         $jemaat = Jemaat::find($id_jemaat);
-        $pelayanan = DB::table('pelayanans')->select('id_pelayanan', 'jenis_pelayanan')->get();
+        // $pelayanan = DB::table('pelayanans')->select('id_pelayanan', 'jenis_pelayanan')->get();
         // dd($pelayanan);
         $wilayah = DB::table('wilayahs')->select('id_wilayah', 'nama_wilayah')->get();
         // dd($jemaat);
-        return view('dashboard.jemaat.edit',compact(['jemaat'], ['pelayanan'], ['wilayah']));
+        return view('dashboard.jemaat.edit',compact(['jemaat'], ['wilayah']));
     }
     public function update($id_jemaat, Request $request)
     {

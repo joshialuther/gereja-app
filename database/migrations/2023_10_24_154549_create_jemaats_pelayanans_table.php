@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('persembahans', function (Blueprint $table) {
+        Schema::create('jemaats_pelayanans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_persembahan');
-            $table->enum('jenis_persembahan',['Persembahan Kolekte', 'Persembahan Khusus', 'Persembahan Persepuluhan','Persembahan Ucapan Syukur','dll']);
-            $table->string('jumlah_persembahan');
+            $table->foreign('id_jemaats')->references('id_jemaats')->on('jemaats');
+            $table->foreign('id_pelayanas')->references('id_pelayanans')->on('pelayanans');
 
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persembahans');
+        Schema::dropIfExists('jemaats_pelayanans');
     }
 };

@@ -18,15 +18,16 @@
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        {{-- <th>#</th> --}}
                         <th>Nama</th>
                         <th>Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
-                        <th>Kelompok Wilayah</th>
+                        {{-- <th>Kelompok Wilayah</th> --}}
                         <th>NIK</th>
                         <th>Nomor Telepon</th>
                         <th>Golongan Darah</th>
                         <th>Alamat</th>
+                        {{-- <th>Pelayanan</th> --}}
                         <th>Pelayanan</th>
                         <th>Wilayah</th>
                         <th colspan="2">Action</th>
@@ -35,16 +36,23 @@
                 @foreach ($jemaat as $dataJemaat)
                     <tbody>
                         <tr>
-                            <td>{{ $dataJemaat->id_jemaat }}</td>
                             <td>{{ $dataJemaat->nama }}</td>
                             <td>{{ \Carbon\Carbon::parse($dataJemaat->tanggal_lahir)->translatedFormat('d-F-Y') }}</td>
                             <td>{{ $dataJemaat->jenis_kelamin }}</td>
-                            <td>{{ $dataJemaat->nama_wilayah }} </td>
+                            {{-- <td>{{ $dataJemaat->nama_wilayah }} </td> --}}
                             <td>{{ $dataJemaat->nik }}</td>
                             <td>{{ $dataJemaat->no_telepon }}</td>
                             <td>{{ $dataJemaat->gol_darah }}</td>
                             <td>{{ $dataJemaat->alamat_jemaat }}</td>
-                            <td>{{ $dataJemaat->jenis_pelayanan }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        {{ $dataJemaat->jenis_pelayanan }}
+                                    </li>
+                                </ul>
+
+                            </td>
+                            </td>
                             <td>{{ $dataJemaat->nama_wilayah }}</td>
                             <td>
                                 <a href="jemaat/{{ $dataJemaat->id_jemaat }}/edit" class="btn btn-primary">Edit</a>

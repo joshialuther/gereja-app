@@ -28,10 +28,22 @@
                                 <input type="number" class="form-control" name="jumlah_persembahan" id="">
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="jenis_persembahan">Jenis Persembahan :</label>
+                                <select name="jenis_persembahan" class="form-control" id="">
+                                    <option value="Persembahan Kolekte">Persembahan Kolekte</option>
+                                    <option value="Persembahan Khusus">Persembahan Khusus</option>
+                                    <option value="Persembahan Persepuluhan">Persembahan Persepuluhan</option>
+                                    <option value="Persembahan Ucapan Syukur">Persembahan Ucapan Syukur</option>
+                                    <option value="dll">dll</option>
+                                </select>
+                            </div>
+                        </div>
                         <br>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="submit" name="simpan" value="simpan">
+                                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>

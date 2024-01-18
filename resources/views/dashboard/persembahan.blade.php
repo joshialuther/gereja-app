@@ -18,8 +18,9 @@
             <table class="table">
                 <thead>
                     <tr style="">
-                        <th>#</th>
+                        {{-- <th>#</th> --}}
                         <th>Tanggal</th>
+                        <th>Jenis Persembahan</th>
                         <th>Jumlah Persembahan</th>
                         <th>Action</th>
                     </tr>
@@ -27,10 +28,11 @@
                 @foreach ($persembahan as $dataPersembahan)
                     <tbody>
                         <tr>
-                            <td>{{ $dataPersembahan->id_persembahan }}</td>
+                            {{-- <td>{{ $dataPersembahan->id_persembahan }}</td> --}}
                             <td>{{ \Carbon\Carbon::parse($dataPersembahan->tanggal_persembahan)->translatedFormat('D, d-F-Y') }}
                             </td>
-                            <td>{{ $dataPersembahan->jumlah_persembahan }}</td>
+                            <td>{{ $dataPersembahan->jenis_persembahan }}</td>
+                            <td>@currency($dataPersembahan->jumlah_persembahan)</td>
                             <td>
                                 <ul class="list-inline m-0">
                                     <li class="list-inline-item">

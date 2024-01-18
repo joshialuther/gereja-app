@@ -59,17 +59,19 @@
                             <div class="form-group">
                                 <label for="jenis_kelamin">Jenis Kelamin :</label>
                                 <br>
-                                <input type="radio" id="pria" name="jenis_kelamin" value="pria">
-                                <label for="pria">Pria</label><br>
-                                <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">
-                                <label for="wanita">Wanita</label><br>
+                                <input class="form-check-input" type="radio" id="pria" name="jenis_kelamin"
+                                    value="pria">
+                                <label class="form-check-label" for="pria"> Pria </label><br>
+                                <input class="form-check-input" type="radio" id="wanita" name="jenis_kelamin"
+                                    value="wanita">
+                                <label class="form-check-label" for="wanita"> Wanita </label><br>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="alamat_jemaat">Alamat :</label>
-                                <textarea name="alamat_jemaat" id="alamat_jemaat" cols="25" rows="2"></textarea>
+                                <textarea name="alamat_jemaat" id="alamat_jemaat" cols="25" rows="2" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -80,32 +82,30 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="nama_pelayanan">Pelayanan :</label>
-                                <select name="nama_pelayanan" id="nama_pelayanan">
-                                    @foreach ($dataPelayanan as $item)
-                                        <option value="{{ $item->id_pelayanan }}">{{ $item->jenis_pelayanan }}</option>
+                                <label for="nama">Jenis Pelayanan :</label>
+                                <input type="text" class="form-control" name="jenis_pelayanan" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="nama_wilayah">Wilayah:</label>
+                                <br>
+                                <select name="nama_wilayah" id="nama_wilayah" class="form-control">
+                                    @foreach ($dataWilayah as $item)
+                                        <option value="{{ $item->id_wilayah }}">{{ $item->nama_wilayah }} </option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="nama_wilayah">Wilayah:</label>
-                                    <select name="nama_wilayah" id="nama_wilayah">
-                                        @foreach ($dataWilayah as $item)
-                                            <option value="{{ $item->id_wilayah }}">{{ $item->nama_wilayah }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="submit" value="submit">
-                                </div>
+                        </div>
+                        <br>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
     </form>
 @endsection

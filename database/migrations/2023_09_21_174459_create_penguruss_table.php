@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('persembahans', function (Blueprint $table) {
+        Schema::create('penguruss', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_persembahan');
-            $table->enum('jenis_persembahan',['Persembahan Kolekte', 'Persembahan Khusus', 'Persembahan Persepuluhan','Persembahan Ucapan Syukur','dll']);
-            $table->string('jumlah_persembahan');
-
+            $table->string('nama_pengurus');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persembahans');
+        Schema::dropIfExists('penguruss');
     }
 };

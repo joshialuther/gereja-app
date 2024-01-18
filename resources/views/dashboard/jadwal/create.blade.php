@@ -34,7 +34,7 @@
                         <br>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="submit" value="simpan">
+                                <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>

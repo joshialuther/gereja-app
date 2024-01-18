@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-    <form action="/persembahan/{{ $persembahan->id_persembahan }}" method="POST">
+    <form action="/pengurus/{{ $pengurus->id_pengurus }}" method="POST">
         @method('put')
         @csrf
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-8 align-self-center">
-                        <h3>Edit Persembahan</h3>
+                        <h3>Edit Pengurus</h3>
                     </div>
                 </div>
             </div>
@@ -18,17 +18,16 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="tanggal_persembahan">Tanggal :</label>
-                                <input type="date" class="form-control" name="tanggal_persembahan" id=""
-                                    value="{{ $persembahan->tanggal_persembahan }}">
+                                <label for="nama_pengurus">Nama :</label>
+                                <input type="text" class="form-control" name="nama_pengurus" id=""
+                                    value="{{ $pengurus->nama_pengurus }}">
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="jumlah_persembahan">Jumlah Persembahan :</label>
-                                <input type="number" class="form-control" name="jumlah_persembahan" id=""
-                                    value="{{ $persembahan->jumlah_persembahan }}">
+                                <label for="jenis_jabatan">Jabatan :</label>
+                                <input type="text" class="form-control" name="jenis_jabatan" id=""
+                                    value="{{ $pengurus->jenis_jabatan }}">
                             </div>
                         </div>
                         <br>

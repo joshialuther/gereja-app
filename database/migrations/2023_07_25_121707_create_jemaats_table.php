@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('alamat_jemaat');
             $table->string('no_telepon');
             $table->foreign('id_wilayah')->references('nama_wilayah')->on('wilayahs');
-            $table->foreign('id_pelayanan')->references('jenis_pelayanan')->on('pelayanans');
+            $table->string('jenis_pelayanan');
 
 
         });
